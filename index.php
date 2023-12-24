@@ -66,28 +66,44 @@ $mysqli->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <form id="todo-form" method="post">
-        <input type="text" id="task-title" name="task-title" placeholder="Task Title" required>
-        <input type="hidden" name="actionADD" value="new">
-        <button type="submit">Add</button>
-    </form>
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Todo List</a>
+    </nav>
 
-    <div id="todo-list">
-        <?php foreach ($taches as $tache): ?>
-            <form method="post">
-                <div class="todo <?php echo $tache['done'] ? 'done' : ''; ?>">
-                    <input type="checkbox" name="toggle_id" value="<?php echo $tache['id']; ?>" <?php echo $tache['done'] ? 'checked' : ''; ?>>
-                    <label><?php echo $tache['task_title']; ?></label>
-                    <button type="submit" name="delete" value="Delete">
-                        Delete
-                        <input type="hidden" name="delete_id" value="<?php echo $tache['id']; ?>">
-                    </button>
-                    <input type="hidden" name="toggle" value="Toggle">
+    <div class="container mt-4">
+        <!-- Todo Form -->
+        <form id="todo-form" method="post" class="mb-3">
+            <div class="input-group">
+                <input type="text" id="task-title" name="task-title" class="form-control" placeholder="Task Title" required>
+                <div class="input-group-append">
+                    <button type="submit" name="actionADD" value="new" class="btn btn-primary">Add</button>
                 </div>
-            </form>
-        <?php endforeach; ?>
+            </div>
+        </form>
+
+        <!-- Todo List -->
+        <ul class="list-group">
+            <?php foreach ($taches as $tache): ?>
+                <form method="post" class="mb-2">
+                    <li class="list-group-item <?php echo $tache['done'] ? 'list-group-item-success' : 'list-group-item-warning'; ?>">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" name="toggle_id" value="<?php echo $tache['id']; ?>" class="form-check-input" <?php echo $tache['done'] ? 'checked' : ''; ?>>
+                                <label class="form-check-label"><?php echo $tache['task_title']; ?></label>
+                            </div>
+                        </div>
+                        <button type="submit" name="action" value="toggle" class="btn btn-sm btn-info">Toggle</button>
+                        <button type="submit" name="action" value="delete" class="btn btn-sm btn-danger">Delete</button>
+                        <input type="hidden" name="delete_id" value="<?php echo $tache['id']; ?>">
+                    </li>
+                </form>
+            <?php endforeach; ?>
+        </ul>
     </div>
 </body>
 </html>
