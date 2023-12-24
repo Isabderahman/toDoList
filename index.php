@@ -66,17 +66,6 @@ $mysqli->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    <style>
-        .todo {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .done {
-            text-decoration: line-through;
-        }
-    </style>
 </head>
 <body>
     <form id="todo-form" method="post">
