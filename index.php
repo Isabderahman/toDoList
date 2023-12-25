@@ -97,8 +97,8 @@ $mysqli->close();
                                 <label class="form-check-label"><?php echo $tache['task_title']; ?></label>
                             </div>
                         </div>
-                        <button type="submit" name="action" value="toggle" class="btn btn-sm btn-info">Toggle</button>
-                        <button type="submit" name="action" value="delete" class="btn btn-sm btn-danger">Delete</button>
+                        <button type="submit" name="" value="toggle" class="btn btn-sm btn-info">Toggle</button>
+                        <button type="submit" name="" value="delete" class="btn btn-sm btn-danger">Delete</button>
                         <input type="hidden" name="delete_id" value="<?php echo $tache['id']; ?>">
                     </li>
                 </form>
